@@ -11,8 +11,8 @@ class Bug {
   }
   
   void display() {
-    rectMode(CENTER);
-    rect(xPos, yPos, 15, 15);
+    ellipseMode(CENTER);
+    ellipse(xPos, yPos, 20, 20);
   }
   
   void turnRight() {
@@ -41,13 +41,33 @@ class Bug {
   
   void move() {
     switch(direction) {
-      case UP: this.yPos += 5;
+      case UP: changeY(-10);
       break;
-      case RIGHT: this.xPos += 5;
+      case RIGHT: changeX(10);
       break;
-      case DOWN: this.yPos -= 5;
+      case DOWN: changeY(10);
       break;
-      case LEFT: this.xPos -= 5;
+      case LEFT: changeX(-10);
+    }
+  }
+  
+  void changeX(int distance) {
+    this.xPos += distance;
+    if (xPos > width - 20) {
+      this.direction = Direction.LEFT;
+    }
+    if (xPos < 0 + 20) {
+      this.direction = Direction.RIGHT;
+    }
+  }
+  
+  void changeY(int distance) {
+    this.yPos += distance;
+    if (yPos > height - 20) {
+      this.direction = Direction.UP;
+    }
+    if (yPos < 0 + 20) {
+      this.direction = Direction.DOWN;
     }
   }
   
