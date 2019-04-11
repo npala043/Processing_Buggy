@@ -17,25 +17,41 @@ class Bug {
   
   void turnRight() {
     switch(direction) {
-      case UP: this.direction = Direction.RIGHT;
+      case UP: this.direction = Direction.UR;
       break;
-      case RIGHT: this.direction = Direction.DOWN;
+      case UR: this.direction = Direction.RIGHT;
       break;
-      case DOWN: this.direction = Direction.LEFT;
+      case RIGHT: this.direction = Direction.DR;
       break;
-      case LEFT: this.direction = Direction.UP;
+      case DR: this.direction = Direction.DOWN;
+      break;
+      case DOWN: this.direction = Direction.DL;
+      break;
+      case DL: this.direction = Direction.LEFT;
+      break;
+      case LEFT: this.direction = Direction.UL;
+      break;
+      case UL: this.direction = Direction.UP;
     }
   }
   
   void turnLeft() {
     switch(direction) {
-      case UP: this.direction = Direction.LEFT;
+      case UP: this.direction = Direction.UL;
       break;
-      case LEFT: this.direction = Direction.DOWN;
+      case UL: this.direction = Direction.LEFT;
       break;
-      case DOWN: this.direction = Direction.RIGHT;
+      case LEFT: this.direction = Direction.DL;
       break;
-      case RIGHT: this.direction = Direction.UP;
+      case DL: this.direction = Direction.DOWN;
+      break;
+      case DOWN: this.direction = Direction.DR;
+      break;
+      case DR: this.direction = Direction.RIGHT;
+      break;
+      case RIGHT: this.direction = Direction.UR;
+      break;
+      case UR: this.direction = Direction.UP;
     }
   }
   
