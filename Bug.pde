@@ -64,21 +64,47 @@ class Bug {
       case DOWN: changeY(10);
       break;
       case LEFT: changeX(-10);
+      break;
+      case UL: changeXY(-10, 10);
+      break;
+      case UR: changeXY(10, 10);
+      break;
+      case DL: changeXY(-10, -10);
+      break;
+      case DR: changeXY(10, -10);
     }
   }
   
   void changeX(int distance) {
     this.xPos += distance;
+    checkOOB();
+  }
+  
+  void changeY(int distance) {
+    this.yPos += distance;
+    checkOOB();
+  }
+  
+  void changeXY(int x, int y) {
+    this.xPos += x;
+    this.yPos += y;
+    
+    if (xPos > width - 20 && yPos > height - 20) {
+      this.direction = Direction.UL;
+    }
+    if (xPos < 0 + 20 && yPos < 0 + 20) {
+      this.direction = Direction.DR;
+    }
+    checkOOB();
+  }
+  
+  void checkOOB() {
     if (xPos > width - 20) {
       this.direction = Direction.LEFT;
     }
     if (xPos < 0 + 20) {
       this.direction = Direction.RIGHT;
     }
-  }
-  
-  void changeY(int distance) {
-    this.yPos += distance;
     if (yPos > height - 20) {
       this.direction = Direction.UP;
     }
